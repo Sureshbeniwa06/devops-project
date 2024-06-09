@@ -1,0 +1,1235 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang16393{\fonttbl{\f0\fmodern Consolas;}{\f1\fmodern\fcharset0 Consolas;}{\f2\fnil\fcharset129 Courier New;}}
+{\colortbl ;\red16\green158\blue98;\red20\green20\blue20;\red142\green142\blue142;\red170\green64\blue64;\red56\green136\blue159;\red18\green124\blue155;\red170\green85\blue85;\red85\green85\blue85;\red170\green51\blue170;}
+\viewkind4\uc1\pard\f0\fs20     \u9474?\f1    \bullet  Direct SSH      :  \cf1\f0\u10003?\cf0                                              \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH compression :  \cf1\f0\u10003?\cf0                                              \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9474?\f1    \bullet  SSH-browser     :  \cf1\f0\u10003?\cf0                                              \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9474?\f1    \bullet  X11-forwarding  :  \cf4\f0\u10007?\cf0   (disabled or not supported by server)      \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9474?                                                                      \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9474? \u11166? For more info, ctrl+click on \cf5\ul help\cf0\ulnone  or visit our \cf5\ul website\cf0\ulnone .            \u9474?\cf2\highlight3 
+\par \cf0\highlight0     \u9492?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9496?\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Last login: Fri May 31 08:55:23 2024 from 106.78.52.36\cf2\highlight3 
+\par \cf0\highlight0    ,     #_\cf2\highlight3 
+\par \cf0\highlight0    ~\\_  ####_        Amazon Linux 2\cf2\highlight3 
+\par \cf0\highlight0   ~~  \\_#####\\\cf2\highlight3 
+\par \cf0\highlight0   ~~     \\###|       AL2 End of Life is 2025-06-30.\cf2\highlight3 
+\par \cf0\highlight0   ~~       \\#/ ___\cf2\highlight3 
+\par \cf0\highlight0    ~~       V~' '->\cf2\highlight3 
+\par \cf0\highlight0     ~~~         /    A newer version of Amazon Linux is available!\cf2\highlight3 
+\par \cf0\highlight0       ~~._.   _/\cf2\highlight3 
+\par \cf0\highlight0          _/ _/       Amazon Linux 2023, GA and supported until 2028-03-15.\cf2\highlight3 
+\par \cf0\highlight0        _/m/'           https://aws.amazon.com/linux/amazon-linux-2023/\cf2\highlight3 
+\par 
+\par \cf0\highlight0 5 package(s) needed for security, out of 6 available\cf2\highlight3 
+\par \cf0\highlight0 Run "sudo yum update" to apply all updates.\cf2\highlight3 
+\par \cf0\highlight0 [ec2-user@ip-172-31-11-253 ~]$ clear\cf2\highlight3 
+\par \cf0\highlight0 [ec2-user@ip-172-31-11-253 ~]$ sudo su\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# sudo wget -O /etc/yum.repos.d/jenkins.repo \\\cf2\highlight3 
+\par \cf0\highlight0 >     https://pkg.jenkins.io/redhat-stable/jenkins.repo\cf2\highlight3 
+\par \cf0\highlight0 --2024-05-31 09:39:00--  https://pkg.jenkins.io/redhat-stable/jenkins.repo\cf2\highlight3 
+\par \cf0\highlight0 Resolving pkg.jenkins.io (pkg.jenkins.io)... 151.101.30.133, 2a04:4e42:7::645\cf2\highlight3 
+\par \cf0\highlight0 Connecting to pkg.jenkins.io (pkg.jenkins.io)|151.101.30.133|:443... connected.\cf2\highlight3 
+\par \cf0\highlight0 HTTP request sent, awaiting response... 200 OK\cf2\highlight3 
+\par \cf0\highlight0 Length: 85\cf2\highlight3 
+\par \cf0\highlight0\f1 Saving to: \lquote /etc/yum.repos.d/jenkins.repo\rquote\cf2\highlight3\f0 
+\par 
+\par \cf0\highlight0 100%[======================================>] 85          --.-K/s   in 0s\cf2\highlight3 
+\par 
+\par \cf0\highlight0\f1 2024-05-31 09:39:01 (5.57 MB/s) - \lquote /etc/yum.repos.d/jenkins.repo\rquote  saved [85/85]\cf2\highlight3\f0 
+\par 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#  sudo yum upgrade\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 amzn2-core                                               | 3.6 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 Resolving Dependencies\cf2\highlight3 
+\par \cf0\highlight0 --> Running transaction check\cf2\highlight3 
+\par \cf0\highlight0 ---> Package cloud-init.noarch 0:19.3-46.amzn2.0.1 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package cloud-init.noarch 0:19.3-46.amzn2.0.2 will be an update\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git.x86_64 0:2.40.1-1.amzn2.0.2 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git.x86_64 0:2.40.1-1.amzn2.0.3 will be an update\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git-core.x86_64 0:2.40.1-1.amzn2.0.2 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git-core.x86_64 0:2.40.1-1.amzn2.0.3 will be an update\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git-core-doc.noarch 0:2.40.1-1.amzn2.0.2 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package git-core-doc.noarch 0:2.40.1-1.amzn2.0.3 will be an update\cf2\highlight3 
+\par \cf0\highlight0 ---> Package less.x86_64 0:458-9.amzn2.0.3 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package less.x86_64 0:458-9.amzn2.0.4 will be an update\cf2\highlight3 
+\par \cf0\highlight0 ---> Package perl-Git.noarch 0:2.40.1-1.amzn2.0.2 will be updated\cf2\highlight3 
+\par \cf0\highlight0 ---> Package perl-Git.noarch 0:2.40.1-1.amzn2.0.3 will be an update\cf2\highlight3 
+\par \cf0\highlight0 --> Finished Dependency Resolution\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Dependencies Resolved\cf2\highlight3 
+\par 
+\par \cf0\highlight0 ================================================================================\cf2\highlight3 
+\par \cf0\highlight0  Package           Arch        Version                    Repository       Size\cf2\highlight3 
+\par \cf0\highlight0 ================================================================================\cf2\highlight3 
+\par \cf0\highlight0 Updating:\cf2\highlight3 
+\par \cf0\highlight0  cloud-init        noarch      19.3-46.amzn2.0.2          amzn2-core      927 k\cf2\highlight3 
+\par \cf0\highlight0  git               x86_64      2.40.1-1.amzn2.0.3         amzn2-core       54 k\cf2\highlight3 
+\par \cf0\highlight0  git-core          x86_64      2.40.1-1.amzn2.0.3         amzn2-core       10 M\cf2\highlight3 
+\par \cf0\highlight0  git-core-doc      noarch      2.40.1-1.amzn2.0.3         amzn2-core      3.0 M\cf2\highlight3 
+\par \cf0\highlight0  less              x86_64      458-9.amzn2.0.4            amzn2-core      119 k\cf2\highlight3 
+\par \cf0\highlight0  perl-Git          noarch      2.40.1-1.amzn2.0.3         amzn2-core       42 k\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Transaction Summary\cf2\highlight3 
+\par \cf0\highlight0 ================================================================================\cf2\highlight3 
+\par \cf0\highlight0 Upgrade  6 Packages\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Total download size: 14 M\cf2\highlight3 
+\par \cf0\highlight0 Is this ok [y/d/N]: y\cf2\highlight3 
+\par \cf0\highlight0 Downloading packages:\cf2\highlight3 
+\par \cf0\highlight0 Delta RPMs disabled because /usr/bin/applydeltarpm not installed.\cf2\highlight3 
+\par \cf0\highlight0 (1/6): git-2.40.1-1.amzn2.0.3.x86_64.rpm                   |  54 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (2/6): cloud-init-19.3-46.amzn2.0.2.noarch.rpm             | 927 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (3/6): git-core-doc-2.40.1-1.amzn2.0.3.noarch.rpm          | 3.0 MB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (4/6): less-458-9.amzn2.0.4.x86_64.rpm                     | 119 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (5/6): perl-Git-2.40.1-1.amzn2.0.3.noarch.rpm              |  42 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (6/6): git-core-2.40.1-1.amzn2.0.3.x86_64.rpm              |  10 MB   00:00\cf2\highlight3 
+\par \cf0\highlight0 --------------------------------------------------------------------------------\cf2\highlight3 
+\par \cf0\highlight0 Total                                               43 MB/s |  14 MB  00:00\cf2\highlight3 
+\par \cf0\highlight0 Running transaction check\cf2\highlight3 
+\par \cf0\highlight0 Running transaction test\cf2\highlight3 
+\par \cf0\highlight0 Transaction test succeeded\cf2\highlight3 
+\par \cf0\highlight0 Running transaction\cf2\highlight3 
+\par \cf0\highlight0   Updating   : less-458-9.amzn2.0.4.x86_64                                 1/12\cf2\highlight3 
+\par \cf0\highlight0   Updating   : git-core-2.40.1-1.amzn2.0.3.x86_64                          2/12\cf2\highlight3 
+\par \cf0\highlight0   Updating   : git-core-doc-2.40.1-1.amzn2.0.3.noarch                      3/12\cf2\highlight3 
+\par \cf0\highlight0   Updating   : perl-Git-2.40.1-1.amzn2.0.3.noarch                          4/12\cf2\highlight3 
+\par \cf0\highlight0   Updating   : git-2.40.1-1.amzn2.0.3.x86_64                               5/12\cf2\highlight3 
+\par \cf0\highlight0   Updating   : cloud-init-19.3-46.amzn2.0.2.noarch                         6/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : perl-Git-2.40.1-1.amzn2.0.2.noarch                          7/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : git-2.40.1-1.amzn2.0.2.x86_64                               8/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : git-core-doc-2.40.1-1.amzn2.0.2.noarch                      9/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : cloud-init-19.3-46.amzn2.0.1.noarch                        10/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : git-core-2.40.1-1.amzn2.0.2.x86_64                         11/12\cf2\highlight3 
+\par \cf0\highlight0   Cleanup    : less-458-9.amzn2.0.3.x86_64                                12/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-2.40.1-1.amzn2.0.3.x86_64                               1/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : cloud-init-19.3-46.amzn2.0.2.noarch                         2/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-core-2.40.1-1.amzn2.0.3.x86_64                          3/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-core-doc-2.40.1-1.amzn2.0.3.noarch                      4/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : perl-Git-2.40.1-1.amzn2.0.3.noarch                          5/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : less-458-9.amzn2.0.4.x86_64                                 6/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : cloud-init-19.3-46.amzn2.0.1.noarch                         7/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-core-doc-2.40.1-1.amzn2.0.2.noarch                      8/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-2.40.1-1.amzn2.0.2.x86_64                               9/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : git-core-2.40.1-1.amzn2.0.2.x86_64                         10/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : perl-Git-2.40.1-1.amzn2.0.2.noarch                         11/12\cf2\highlight3 
+\par \cf0\highlight0   Verifying  : less-458-9.amzn2.0.3.x86_64                                12/12\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Updated:\cf2\highlight3 
+\par \cf0\highlight0   cloud-init.noarch 0:19.3-46.amzn2.0.2\cf2\highlight3 
+\par \cf0\highlight0   git.x86_64 0:2.40.1-1.amzn2.0.3\cf2\highlight3 
+\par \cf0\highlight0   git-core.x86_64 0:2.40.1-1.amzn2.0.3\cf2\highlight3 
+\par \cf0\highlight0   git-core-doc.noarch 0:2.40.1-1.amzn2.0.3\cf2\highlight3 
+\par \cf0\highlight0   less.x86_64 0:458-9.amzn2.0.4\cf2\highlight3 
+\par \cf0\highlight0   perl-Git.noarch 0:2.40.1-1.amzn2.0.3\cf2\highlight3 
+\par 
+\par \cf0\highlight0 Complete!\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# udo amazon-linux-extras install java-openjdk11 -y\cf2\highlight3 
+\par \cf0\highlight0 bash: udo: command not found\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#   sudo amazon-linux-extras install java-openjdk11 -y\cf2\highlight3 
+\par \cf0\highlight0 Installing java-11-openjdk\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 Cleaning repos: amzn2-core amzn2extra-docker amzn2extra-java-openjdk11\cf2\highlight3 
+\par \cf0\highlight0               : amzn2extra-kernel-5.10 jenkins\cf2\highlight3 
+\par \cf0\highlight0 24 metadata files removed\cf2\highlight3 
+\par \cf0\highlight0 10 sqlite files removed\cf2\highlight3 
+\par \cf0\highlight0 0 metadata files removed\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 amzn2-core                                               | 3.6 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 amzn2extra-docker                                        | 2.9 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 amzn2extra-java-openjdk11                                | 3.0 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 amzn2extra-kernel-5.10                                   | 3.0 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 jenkins                                                  | 2.9 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 (1/10): amzn2-core/2/x86_64/group_gz                       | 2.7 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (2/10): amzn2-core/2/x86_64/updateinfo                     | 866 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (3/10): amzn2extra-java-openjdk11/2/x86_64/primary_db      | 174 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (4/10): amzn2extra-kernel-5.10/2/x86_64/updateinfo         |  63 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (5/10): amzn2extra-docker/2/x86_64/updateinfo              |  16 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (6/10): amzn2extra-docker/2/x86_64/primary_db              | 102 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (7/10): amzn2extra-java-openjdk11/2/x86_64/updateinfo      | 7.7 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (8/10): amzn2extra-kernel-5.10/2/x86_64/primary_db         |  26 MB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (9/10): jenkins/primary_db                                 |  50 kB   00:00\cf2\highlight3 
+\par \cf0\highlight0 (10/10): amzn2-core/2/x86_64/primary_db                    |  68 MB   00:01\cf2\highlight3 
+\par \cf0\highlight0 Package 1:java-11-openjdk-11.0.23.0.9-2.amzn2.0.1.x86_64 already installed and latest version\cf2\highlight3 
+\par \cf0\highlight0 Nothing to do\cf2\highlight3 
+\par \cf0\highlight0   2  httpd_modules            available    [ =1.0  =stable ]\cf2\highlight3 
+\par \cf0\highlight0   3  memcached1.5             available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =1.5.1  =1.5.16  =1.5.17 ]\cf2\highlight3 
+\par \cf0\highlight0   9  R3.4                     available    [ =3.4.3  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  10  rust1                    available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =1.22.1  =1.26.0  =1.26.1  =1.27.2  =1.31.0  =1.38.0\cf2\highlight3 
+\par \cf0\highlight0           =stable ]\cf2\highlight3 
+\par \cf0\highlight0  18  libreoffice              available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =5.0.6.2_15  =5.3.6.1  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  19  gimp                     available    [ =2.8.22 ]\cf2\highlight3 
+\par \cf0\highlight0\f1  20 \'86\cf6\f0 docker=latest            enabled    \cf0   \\\cf2\highlight3 
+\par \cf0\highlight0         [ =17.12.1  =18.03.1  =18.06.1  =18.09.9  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  21  mate-desktop1.x          available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =1.19.0  =1.20.0  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  22  GraphicsMagick1.3        available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =1.3.29  =1.3.32  =1.3.34  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  24  epel                     available    [ =7.11  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  25  testing                  available    [ =1.0  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  26  ecs                      available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  27 \'86corretto8                available    \\\cf2\highlight3\f0 
+\par \cf0\highlight0         [ =1.8.0_192  =1.8.0_202  =1.8.0_212  =1.8.0_222  =1.8.0_232\cf2\highlight3 
+\par \cf0\highlight0           =1.8.0_242  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  32  lustre2.10               available    \\\cf2\highlight3 
+\par \cf0\highlight0         [ =2.10.5  =2.10.8  =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  33 \'86\cf6\f0 java-openjdk11=latest    enabled    \cf0   [ =11  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  34  lynis                    available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  36  BCC                      available    [ =0.x  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  37  mono                     available    [ =5.x  =stable ]\cf2\highlight3 
+\par \cf0\highlight0  38  nginx1                   available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  40  mock                     available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  43  livepatch                available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  44 \'86python3.8                available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  45  haproxy2                 available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  46  collectd                 available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  47  aws-nitro-enclaves-cli   available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  48  R4                       available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0   _  kernel-5.4               available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  50  selinux-ng               available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  52  tomcat9                  available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  53  unbound1.13              available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  54 \'86mariadb10.5              available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  55  \cf6 kernel-5.10=latest       enabled    \cf0   [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  56  redis6                   available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  58 \'86postgresql12             available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0\f1  59 \'86postgresql13             available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  60  mock2                    available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  61  dnsmasq2.85              available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  62  kernel-5.15              available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  63 \'86postgresql14             available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  64  firefox                  available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  65  lustre                   available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  66 \'86php8.1                   available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  67  awscli1                  available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1  68 \'86php8.2                   available    [ =stable ]\cf2\highlight3\f0 
+\par \cf0\highlight0  69  dnsmasq                  available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  70  unbound1.17              available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0  72  collectd-python3         available    [ =stable ]\cf2\highlight3 
+\par \cf0\highlight0\f1\'86 Note on end-of-support. Use 'info' subcommand.\cf2\highlight3\f0 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#  sudo yum install jenkins -y\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 Package jenkins-2.452.1-1.1.noarch already installed and latest version\cf2\highlight3 
+\par \cf0\highlight0 Nothing to do\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#  sudo yum install jenkins -y\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 Package jenkins-2.452.1-1.1.noarch already installed and latest version\cf2\highlight3 
+\par \cf0\highlight0 Nothing to do\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# sudo systemctl enable jenkins\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]#  sudo systemctl start jenkins\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# sudo systemctl status jenkins\cf2\highlight3 
+\par \cf1\highlight0\u9679?\cf0  jenkins.service - Jenkins Continuous Integration Server\cf2\highlight3 
+\par \cf0\highlight0    Loaded: loaded (/usr/lib/systemd/system/jenkins.service; enabled; vendor preset: disabled)\cf2\highlight3 
+\par \cf0\highlight0    Active: \cf1 active (running)\cf0  since Thu 2024-05-30 10:58:58 UTC; 22h ago\cf2\highlight3 
+\par \cf0\highlight0  Main PID: 4709 (java)\cf2\highlight3 
+\par \cf0\highlight0    CGroup: /system.slice/jenkins.service\cf2\highlight3 
+\par \cf0\highlight0            \u9492?\u9472?4709 /usr/bin/java -Djava.awt.headless=true -jar /usr/share/java...\cf2\highlight3 
+\par 
+\par \cf0\highlight0 May 31 09:20:42 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:20:42 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:20:56 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:20:56 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:01 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:01 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:03 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:03 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:55 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 May 31 09:21:55 ip-172-31-11-253.ap-southeast-2.compute.internal jenkins[4709]: ...\cf2\highlight3 
+\par \cf0\highlight0 Hint: Some lines were ellipsized, use -l to show in full.\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 --2024-05-31 09:43:46--  https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 Resolving dlcdn.apache.org (dlcdn.apache.org)... 151.101.2.132, 2a04:4e42::644\cf2\highlight3 
+\par \cf0\highlight0 Connecting to dlcdn.apache.org (dlcdn.apache.org)|151.101.2.132|:443... connected.\cf2\highlight3 
+\par \cf0\highlight0 HTTP request sent, awaiting response... 200 OK\cf2\highlight3 
+\par \cf0\highlight0 Length: 11756919 (11M) [application/x-gzip]\cf2\highlight3 
+\par \cf0\highlight0\f1 Saving to: \lquote apache-tomcat-9.0.89.tar.gz\rquote\cf2\highlight3\f0 
+\par 
+\par \cf0\highlight0 100%[======================================>] 11,756,919  64.4MB/s   in 0.2s\cf2\highlight3 
+\par 
+\par \cf0\highlight0\f1 2024-05-31 09:43:49 (64.4 MB/s) - \lquote apache-tomcat-9.0.89.tar.gz\rquote  saved [11756919/11756919]\cf2\highlight3\f0 
+\par 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 11484\cf2\highlight3 
+\par \cf0\highlight0 -rw-r--r-- 1 root root 11756919 May  3 20:31 \cf7 apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# tar -xvf apa\cf2\highlight3 
+\par \cf0\highlight0 tar: apa: Cannot open: No such file or directory\cf2\highlight3 
+\par \cf0\highlight0 tar: Error is not recoverable: exiting now\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# tar -xvf apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/catalina.policy\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/catalina.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/context.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/jaspic-providers.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/jaspic-providers.xsd\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/logging.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/server.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/tomcat-users.xsd\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/conf/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/logs/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/temp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/META-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/WEB-INF/jsp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/annotationapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/api/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/docs/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/src/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/src/mypackage/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/requestProcess/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/startup/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/elapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jaspicapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jspapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/servletapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/websocketapi/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/META-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/checkbox/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/colors/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/dates/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/error/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/filters/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/http2/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/el/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/listeners/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/num/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/sessions/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/trailers/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/util/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/validators/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/chat/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/lib/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/tags/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/dates/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/num/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/simpletag/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/snp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/xml/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/nonblocking/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/META-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/jsp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/css/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/META-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/css/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/images/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/work/\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/BUILDING.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/CONTRIBUTING.md\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/LICENSE\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/NOTICE\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/README.md\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/RELEASE-NOTES\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/RUNNING.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/bootstrap.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/catalina-tasks.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/catalina.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/ciphers.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/commons-daemon-native.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/commons-daemon.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/configtest.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/digest.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/makebase.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/setclasspath.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/shutdown.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/startup.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/tomcat-native.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/tool-wrapper.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/version.bat\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/annotations-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina-ant.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina-ha.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina-ssi.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina-storeconfig.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina-tribes.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/catalina.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/ecj-4.20.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/el-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/jasper-el.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/jasper.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/jaspic-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/jsp-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/servlet-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-coyote.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-dbcp.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-cs.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-de.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-es.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-fr.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-ja.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-ko.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-pt-BR.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-ru.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-i18n-zh-CN.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-jdbc.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-jni.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-util-scan.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-util.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/tomcat-websocket.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/lib/websocket-api.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/temp/safeToDelete.tmp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/RELEASE-NOTES.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/asf-logo-wide.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/bg-button.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/bg-middle.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/bg-nav.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/bg-upper.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/favicon.ico\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/index.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/tomcat.css\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/ROOT/tomcat.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/BUILDING.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/META-INF/context.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/RELEASE-NOTES.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/RUNNING.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/WEB-INF/jsp/403.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/aio.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/annotationapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/api/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/build.xml.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/deployment.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/installation.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/introduction.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/processes.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/build.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/docs/README.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/sample.war\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/src/mypackage/Hello.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/hello.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/images/tomcat.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/sample/web/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/source.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/appdev/web.xml.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/apr.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/overview.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/requestProcess.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/requestProcess/authentication-process.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/requestProcess/request-process.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/startup.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/startup/serverStartup.pdf\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/architecture/startup/serverStartup.txt\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/balancer-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/building.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/cdi.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/cgi-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/changelog.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/class-loader-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/cluster-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/comments.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/ajp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/automatic-deployment.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-channel.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-deployer.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-interceptor.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-listener.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-manager.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-membership.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-receiver.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-sender.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster-valve.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cluster.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/context.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/cookie-processor.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/credentialhandler.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/engine.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/executor.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/filter.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/globalresources.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/host.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/http.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/http2.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/jar-scan-filter.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/jar-scanner.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/jaspic.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/listeners.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/loader.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/manager.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/realm.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/resources.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/server.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/service.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/sessionidgenerator.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/systemprops.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/config/valve.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/connectors.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/default-servlet.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/deployer-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/developers.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/elapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/graal.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/host-manager-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/html-host-manager-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/html-manager-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/add.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/asf-logo.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/code.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/cors-flowchart.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/design.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/docs-stylesheet.css\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/docs.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fix.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans400.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans400italic.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans600.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans600italic.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans700.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/OpenSans700italic.woff\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/fonts/fonts.css\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/tomcat.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/tomcat.png\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/update.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/images/void.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/introduction.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jasper-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jaspicapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jdbc-pool.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jndi-datasource-examples-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jndi-resources-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/jspapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/logging.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/manager-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/maven-jars.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/mbeans-descriptors-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/mbeans-descriptors.dtd\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/monitoring.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/proxy-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/realm-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/rewrite.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/security-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/security-manager-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/servletapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/setup.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/ssi-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/ssl-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/developers.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/faq.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/interceptors.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/introduction.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/membership.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/setup.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/status.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/tribes/transport.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/virtual-hosting-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/web-socket-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/websocketapi/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/windows-auth-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/docs/windows-service-howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/META-INF/context.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/CookieExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/CookieExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/HelloWorldExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/HelloWorldExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_cs.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_de.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_es.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_fr.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_ja.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_ko.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_pt.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_pt_BR.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_ru.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/LocalStrings_zh_CN.properties\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestHeaderExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestHeaderExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestInfoExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestInfoExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestParamExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/RequestParamExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/ServletToJsp.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/ServletToJsp.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/SessionExample.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/SessionExample.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async0$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async0.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async0.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async1$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async1.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async2$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async2.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async2.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async3.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Async3.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/AsyncStockContextListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/AsyncStockContextListener.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/AsyncStockServlet.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/AsyncStockServlet.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Stockticker$Stock.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Stockticker$TickListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Stockticker.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/async/Stockticker.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/Entries.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/Entries.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/Entry.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/Entry.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/JspCalendar.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/JspCalendar.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/TableBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/cal/TableBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/checkbox/CheckTest.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/checkbox/CheckTest.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/colors/ColorGameBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/colors/ColorGameBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionFilter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionFilter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionFilterTestServlet.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionFilterTestServlet.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionResponseStream.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionResponseStream.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionServletResponseWrapper.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/compressionFilters/CompressionServletResponseWrapper.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/dates/JspCalendar.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/dates/JspCalendar.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/error/Smart.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/error/Smart.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/ExampleTagBase.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/ExampleTagBase.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/FooTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/FooTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/FooTagExtraInfo.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/FooTagExtraInfo.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/LogTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/LogTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/ValuesTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/examples/ValuesTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/filters/ExampleFilter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/filters/ExampleFilter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/http2/SimpleImagePush.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/http2/SimpleImagePush.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/BookBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/BookBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/FooBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/FooBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/ValuesBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/ValuesBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/el/Functions.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/el/Functions.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/EchoAttributesTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/EchoAttributesTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/FindBookSimpleTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/FindBookSimpleTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/HelloWorldSimpleTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/HelloWorldSimpleTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/RepeatSimpleTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/RepeatSimpleTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/ShuffleSimpleTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/ShuffleSimpleTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/TileSimpleTag.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/jsp2/examples/simpletag/TileSimpleTag.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/listeners/ContextListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/listeners/ContextListener.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/listeners/SessionListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/listeners/SessionListener.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/ByteCounter$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/ByteCounter$CounterListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/ByteCounter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/ByteCounter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/NumberWriter$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/NumberWriter$NumberWriterListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/NumberWriter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/nonblocking/NumberWriter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/num/NumberGuessBean.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/num/NumberGuessBean.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/sessions/DummyCart.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/sessions/DummyCart.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/trailers/ResponseTrailers$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/trailers/ResponseTrailers$TrailerFieldSupplier.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/trailers/ResponseTrailers.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/trailers/ResponseTrailers.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/util/CookieFilter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/util/CookieFilter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/util/HTMLFilter.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/util/HTMLFilter.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/validators/DebugValidator.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/validators/DebugValidator.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/ExamplesConfig.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/ExamplesConfig.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/chat/ChatAnnotation.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/chat/ChatAnnotation.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Client$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Client.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Client.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawMessage$ParseException.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawMessage.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawMessage.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardContextListener.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardContextListener.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint$2.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint$3$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint$3.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/DrawboardEndpoint.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room$1$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room$2.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room$MessageType.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room$Player.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/Room.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/AbstractWebsocketMessage.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/AbstractWebsocketMessage.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/BinaryWebsocketMessage.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/BinaryWebsocketMessage.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/CloseWebsocketMessage.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/CloseWebsocketMessage.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/StringWebsocketMessage.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/drawboard/wsmessages/StringWebsocketMessage.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAnnotation.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAnnotation.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAsyncAnnotation$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAsyncAnnotation$CompletedFuture.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAsyncAnnotation.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoAsyncAnnotation.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoEndpoint$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoEndpoint$EchoMessageHandlerBinary.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoEndpoint$EchoMessageHandlerText.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoEndpoint.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoEndpoint.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoStreamAnnotation.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/EchoStreamAnnotation.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/echo/servers.json\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Direction.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Direction.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Location$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Location.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Location.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Snake.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/Snake.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/SnakeAnnotation.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/SnakeAnnotation.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/SnakeTimer$1.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/SnakeTimer.class\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/classes/websocket/snake/SnakeTimer.java\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/403.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/403.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/debug-taglib.tld\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/example-taglib.tld\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/jsp/jsp2-example-taglib.tld\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/tags/displayProducts.tag\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/tags/helloWorld.tag\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/tags/panel.tag\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/async1.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/async1.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/async3.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/async3.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/index.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/async/index.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/Entries.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/Entry.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/JspCalendar.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/TableBean.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/cal1.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/cal1.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/cal2.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/cal2.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/calendar.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/cal/login.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/CheckTest.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/check.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/checkresult.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/checkresult.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/checkbox/cresult.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/ColorGameBean.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/clr.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/colors.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/colrs.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/colors/colrs.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/dates/date.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/dates/date.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/dates/date.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/er.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/err.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/err.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/error.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/errorpge.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/error/errorpge.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/forward.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/forward.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/fwd.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/one.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/one.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/forward/two.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/images/code.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/images/execute.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/images/return.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/foo.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/foo.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/foo.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/inc.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/include.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/include/include.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/Functions.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/ValuesBean.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/ValuesTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-arithmetic.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-arithmetic.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-arithmetic.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-comparisons.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-comparisons.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/basic-comparisons.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/composite.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/composite.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/composite.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/functions.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/functions.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/functions.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/implicit-objects.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/implicit-objects.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/el/implicit-objects.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/FooBean.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/HelloWorldSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/ShuffleSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/TileSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/jspattribute.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/jspattribute.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/jspattribute.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/shuffle.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/shuffle.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspattribute/shuffle.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/basic.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/basic.jspx\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/basic.jspx.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/svgexample.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/textRotate.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/textRotate.jpg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/textRotate.jspx\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/jspx/textRotate.jspx.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/EchoAttributesTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/coda.jspf\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/coda.jspf.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/config.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/config.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/config.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/dynamicattrs.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/dynamicattrs.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/dynamicattrs.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/prelude.jspf\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/misc/prelude.jspf.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/BookBean.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/FindBookSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/Functions.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/HelloWorldSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/RepeatSimpleTag.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/book.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/book.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/book.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/hello.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/hello.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/hello.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/repeat.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/repeat.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/simpletag/repeat.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/displayProducts.tag.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/hello.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/hello.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/hello.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/helloWorld.tag.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/panel.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/panel.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/panel.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/panel.tag.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/products.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/products.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsp2/tagfiles/products.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/ServletToJsp.java.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/hello.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/hello.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/jsptoservlet.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/jsptoservlet.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/jsptoserv/jts.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/num/numguess.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/num/numguess.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/num/numguess.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/error.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/error.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/index.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/index.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/login.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/security/protected/login.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/DummyCart.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/carts.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/carts.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/carts.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/sessions/crt.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/simpletag/foo.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/simpletag/foo.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/simpletag/foo.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/snp/snoop.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/snp/snoop.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/snp/snoop.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/choose.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/choose.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/choose.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/foreach.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/foreach.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/foreach.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/howto.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/if.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/if.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/if.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/tagplugin/notes.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/xml/xml.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/xml/xml.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/jsp/xml/xml.jsp.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/cookies.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/helloworld.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/images/code.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/images/execute.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/images/return.gif\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/index.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/nonblocking/bytecounter.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/reqheaders.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/reqinfo.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/reqparams.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/servlets/sessions.html\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/chat.xhtml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/drawboard.xhtml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/echo.xhtml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/index.xhtml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/examples/websocket/snake.xhtml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/META-INF/context.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/jsp/401.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/jsp/403.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/jsp/404.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/manager.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/css/manager.css\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/images/asf-logo.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/images/tomcat.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/host-manager/index.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/META-INF/context.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/401.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/403.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/404.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/connectorCerts.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/connectorCiphers.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/connectorTrustedCerts.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/sessionDetail.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/jsp/sessionsList.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/WEB-INF/web.xml\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/css/manager.css\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/images/asf-logo.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/images/tomcat.svg\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/index.jsp\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/status.xsd\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/webapps/manager/xform.xsl\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/catalina.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/ciphers.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/configtest.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/daemon.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/digest.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/makebase.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/setclasspath.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/startup.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/tool-wrapper.sh\cf2\highlight3 
+\par \cf0\highlight0 apache-tomcat-9.0.89/bin/version.sh\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 11484\cf2\highlight3 
+\par \cf0\highlight0 drwxr-xr-x 9 root root      220 May 31 09:46 \cf6 apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 -rw-r--r-- 1 root root 11756919 May  3 20:31 \cf7 apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# ls\cf2\highlight3 
+\par \cf6\highlight0 apache-tomcat-9.0.89\cf0   \cf7 apache-tomcat-9.0.89.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 ec2-user]# cd apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd bin\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ls\cf2\highlight3 
+\par \cf7\highlight0 bootstrap.jar\cf0                  \cf1 configtest.sh\cf0      \cf1 shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 catalina.bat                  \cf1 daemon.sh\cf0          startup.bat\cf2\highlight3 
+\par \cf1\highlight0 catalina.sh\cf0                    digest.bat        \cf1 startup.sh\cf2\highlight3 
+\par \cf0\highlight0 catalina-tasks.xml            \cf1 digest.sh\cf0          \cf7 tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 ciphers.bat                   makebase.bat      \cf7 tomcat-native.tar.gz\cf2\highlight3 
+\par \cf1\highlight0 ciphers.sh\cf0                     \cf1 makebase.sh\cf0        tool-wrapper.bat\cf2\highlight3 
+\par \cf7\highlight0 commons-daemon.jar\cf0             setclasspath.bat  \cf1 tool-wrapper.sh\cf2\highlight3 
+\par \cf7\highlight0 commons-daemon-native.tar.gz\cf0   \cf1 setclasspath.sh\cf0    version.bat\cf2\highlight3 
+\par \cf0\highlight0 configtest.bat                shutdown.bat      \cf1 version.sh\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ./startup.sh\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_BASE:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_HOME:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_TMPDIR: /home/ec2-user/apache-tomcat-9.0.89/temp\cf2\highlight3 
+\par \cf0\highlight0 Using JRE_HOME:        /\cf2\highlight3 
+\par \cf0\highlight0 Using CLASSPATH:       /home/ec2-user/apache-tomcat-9.0.89/bin/bootstrap.jar:/home/ec2-user/apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_OPTS:\cf2\highlight3 
+\par \cf0\highlight0 Tomcat started.\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# pwd\cf2\highlight3 
+\par \cf0\highlight0 /home/ec2-user/apache-tomcat-9.0.89/bin\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# cd ..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]#\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# pwd\cf2\highlight3 
+\par \cf0\highlight0 /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd conf/\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# ls\cf2\highlight3 
+\par \cf6\highlight0 Catalina\cf0              context.xml           logging.properties  tomcat-users.xsd\cf2\highlight3 
+\par \cf0\highlight0 catalina.policy      jaspic-providers.xml  server.xml          web.xml\cf2\highlight3 
+\par \cf0\highlight0 catalina.properties  jaspic-providers.xsd  tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 232\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 3 root root     23 May 31 09:49 \cf6 Catalina\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root  12953 May  3 20:22 catalina.policy\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   7630 May  3 20:22 catalina.properties\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   1400 May  3 20:22 context.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   1149 May  3 20:22 jaspic-providers.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2313 May  3 20:22 jaspic-providers.xsd\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   4144 May  3 20:22 logging.properties\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   7856 May  3 20:22 server.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2756 May  3 20:22 tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2558 May  3 20:22 tomcat-users.xsd\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root 172951 May  3 20:22 web.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# vi server.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# cd ..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd bin/\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 816\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  35451 May  3 20:22 \cf7 bootstrap.jar\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  16856 May  3 20:22 catalina.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root  25323 May  3 20:22 \cf1 catalina.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   1664 May  3 20:22 catalina-tasks.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2123 May  3 20:22 ciphers.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1997 May  3 20:22 \cf1 ciphers.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  25661 May  3 20:22 \cf7 commons-daemon.jar\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root 214214 May  3 20:22 \cf7 commons-daemon-native.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2040 May  3 20:22 configtest.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1922 May  3 20:22 \cf1 configtest.sh\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   9100 May  3 20:22 \cf1 daemon.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2091 May  3 20:22 digest.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1965 May  3 20:22 \cf1 digest.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   3606 May  3 20:22 makebase.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   3382 May  3 20:22 \cf1 makebase.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   3814 May  3 20:22 setclasspath.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   4317 May  3 20:22 \cf1 setclasspath.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2020 May  3 20:22 shutdown.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1902 May  3 20:22 \cf1 shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2022 May  3 20:22 startup.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1904 May  3 20:22 \cf1 startup.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  49607 May  3 20:22 \cf7 tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root 345276 May  3 20:22 \cf7 tomcat-native.tar.gz\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   4576 May  3 20:22 tool-wrapper.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   5540 May  3 20:22 \cf1 tool-wrapper.sh\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root   2026 May  3 20:22 version.bat\cf2\highlight3 
+\par \cf0\highlight0 -rwxr-x--- 1 root root   1908 May  3 20:22 \cf1 version.sh\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ./shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_BASE:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_HOME:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_TMPDIR: /home/ec2-user/apache-tomcat-9.0.89/temp\cf2\highlight3 
+\par \cf0\highlight0 Using JRE_HOME:        /\cf2\highlight3 
+\par \cf0\highlight0 Using CLASSPATH:       /home/ec2-user/apache-tomcat-9.0.89/bin/bootstrap.jar:/home/ec2-user/apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_OPTS:\cf2\highlight3 
+\par \cf0\highlight0 NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]#\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ./startup.sh\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_BASE:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_HOME:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_TMPDIR: /home/ec2-user/apache-tomcat-9.0.89/temp\cf2\highlight3 
+\par \cf0\highlight0 Using JRE_HOME:        /\cf2\highlight3 
+\par \cf0\highlight0 Using CLASSPATH:       /home/ec2-user/apache-tomcat-9.0.89/bin/bootstrap.jar:/home/ec2-user/apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_OPTS:\cf2\highlight3 
+\par \cf0\highlight0 Tomcat started.\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# cd ..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd webapps\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 webapps]# ls\cf2\highlight3 
+\par \cf6\highlight0 docs\cf0   \cf6 examples\cf0   \cf6 host-manager\cf0   \cf6 manager\cf0   \cf6 ROOT\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 webapps]# cd manager\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 manager]# ls\cf2\highlight3 
+\par \cf6\highlight0 css\cf0   \cf6 images\cf0   index.jsp  \cf6 META-INF\cf0   status.xsd  \cf6 WEB-INF\cf0   xform.xsl\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 manager]# cd META_INF\cf2\highlight3 
+\par \cf0\highlight0 bash: cd: META_INF: No such file or directory\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 manager]# cd  META-INF\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 META-INF]# ls\cf2\highlight3 
+\par \cf0\highlight0 context.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 META-INF]# vi context.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 META-INF]# cd ../../..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd conf\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# ls\cf2\highlight3 
+\par \cf6\highlight0 Catalina\cf0              context.xml           logging.properties  tomcat-users.xsd\cf2\highlight3 
+\par \cf0\highlight0 catalina.policy      jaspic-providers.xml  server.xml          web.xml\cf2\highlight3 
+\par \cf0\highlight0 catalina.properties  jaspic-providers.xsd  tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# vi tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# cd ..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd bin\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ./shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_BASE:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_HOME:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_TMPDIR: /home/ec2-user/apache-tomcat-9.0.89/temp\cf2\highlight3 
+\par \cf0\highlight0 Using JRE_HOME:        /\cf2\highlight3 
+\par \cf0\highlight0 Using CLASSPATH:       /home/ec2-user/apache-tomcat-9.0.89/bin/bootstrap.jar:/home/ec2-user/apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_OPTS:\cf2\highlight3 
+\par \cf0\highlight0 NOTE: Picked up JDK_JAVA_OPTIONS:  --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.io=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.util.concurrent=ALL-UNNAMED --add-opens=java.rmi/sun.rmi.transport=ALL-UNNAMED\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ./startup.sh\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_BASE:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_HOME:   /home/ec2-user/apache-tomcat-9.0.89\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_TMPDIR: /home/ec2-user/apache-tomcat-9.0.89/temp\cf2\highlight3 
+\par \cf0\highlight0 Using JRE_HOME:        /\cf2\highlight3 
+\par \cf0\highlight0 Using CLASSPATH:       /home/ec2-user/apache-tomcat-9.0.89/bin/bootstrap.jar:/home/ec2-user/apache-tomcat-9.0.89/bin/tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 Using CATALINA_OPTS:\cf2\highlight3 
+\par \cf0\highlight0 Tomcat started.\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# sudo yum install git -y\cf2\highlight3 
+\par \cf0\highlight0 Loaded plugins: extras_suggestions, langpacks, priorities, update-motd\cf2\highlight3 
+\par \cf0\highlight0 amzn2-core                                               | 3.6 kB     00:00\cf2\highlight3 
+\par \cf0\highlight0 Package git-2.40.1-1.amzn2.0.3.x86_64 already installed and latest version\cf2\highlight3 
+\par \cf0\highlight0 Nothing to do\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# git --version\cf2\highlight3 
+\par \cf0\highlight0 git version 2.40.1\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# pwd\cf2\highlight3 
+\par \cf0\highlight0 /home/ec2-user/apache-tomcat-9.0.89/bin\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# ls\cf2\highlight3 
+\par \cf7\highlight0 bootstrap.jar\cf0                  \cf1 configtest.sh\cf0      \cf1 shutdown.sh\cf2\highlight3 
+\par \cf0\highlight0 catalina.bat                  \cf1 daemon.sh\cf0          startup.bat\cf2\highlight3 
+\par \cf1\highlight0 catalina.sh\cf0                    digest.bat        \cf1 startup.sh\cf2\highlight3 
+\par \cf0\highlight0 catalina-tasks.xml            \cf1 digest.sh\cf0          \cf7 tomcat-juli.jar\cf2\highlight3 
+\par \cf0\highlight0 ciphers.bat                   makebase.bat      \cf7 tomcat-native.tar.gz\cf2\highlight3 
+\par \cf1\highlight0 ciphers.sh\cf0                     \cf1 makebase.sh\cf0        tool-wrapper.bat\cf2\highlight3 
+\par \cf7\highlight0 commons-daemon.jar\cf0             setclasspath.bat  \cf1 tool-wrapper.sh\cf2\highlight3 
+\par \cf7\highlight0 commons-daemon-native.tar.gz\cf0   \cf1 setclasspath.sh\cf0    version.bat\cf2\highlight3 
+\par \cf0\highlight0 configtest.bat                shutdown.bat      \cf1 version.sh\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# pwd\cf2\highlight3 
+\par \cf0\highlight0 /home/ec2-user/apache-tomcat-9.0.89/bin\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 bin]# cd ..\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls\cf2\highlight3 
+\par \cf6\highlight0 bin\cf0            CONTRIBUTING.md  \cf6 logs\cf0        RELEASE-NOTES  \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 BUILDING.txt  \cf6 lib\cf0               NOTICE     RUNNING.txt    \cf6 work\cf2\highlight3 
+\par \cf6\highlight0 conf\cf0           LICENSE          README.md  \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 132\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 2 root root  4096 May 31 10:12 \cf6 bin\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root 20913 May  3 20:22 BUILDING.txt\cf2\highlight3 
+\par \cf0\highlight0 drwx------ 3 root root   254 May 31 10:10 \cf6 conf\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  6210 May  3 20:22 CONTRIBUTING.md\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 2 root root  4096 May 31 09:46 \cf6 lib\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root 57092 May  3 20:22 LICENSE\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 2 root root   197 May 31 09:49 \cf6 logs\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  2333 May  3 20:22 NOTICE\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  3283 May  3 20:22 README.md\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root  6901 May  3 20:22 RELEASE-NOTES\cf2\highlight3 
+\par \cf0\highlight0 -rw-r----- 1 root root 16505 May  3 20:22 RUNNING.txt\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 2 root root    30 May 31 09:46 \cf6 temp\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 7 root root    81 May  3 20:22 \cf6 webapps\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 3 root root    22 May 31 09:49 \cf6 work\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 apache-tomcat-9.0.89]# cd conf\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# ls -l\cf2\highlight3 
+\par \cf0\highlight0 total 232\cf2\highlight3 
+\par \cf0\highlight0 drwxr-x--- 3 root root     23 May 31 09:49 \cf6 Catalina\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root  12953 May  3 20:22 catalina.policy\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   7630 May  3 20:22 catalina.properties\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   1400 May  3 20:22 context.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   1149 May  3 20:22 jaspic-providers.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2313 May  3 20:22 jaspic-providers.xsd\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   4144 May  3 20:22 logging.properties\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   7856 May 31 09:54 server.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2959 May 31 10:10 tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root   2558 May  3 20:22 tomcat-users.xsd\cf2\highlight3 
+\par \cf0\highlight0 -rw------- 1 root root 172951 May  3 20:22 web.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]# vi tomcat-users.xml\cf2\highlight3 
+\par \cf0\highlight0 [root@ip-172-31-11-253 conf]#\cf2\highlight3 
+\par \cf4\highlight0 Network error: Software caused connection abort\cf2\highlight3 
+\par 
+\par \cf8\highlight0\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\u9472?\cf2\highlight3 
+\par 
+\par \cf4\highlight0 Session stopped\cf2\highlight3 
+\par \cf0\highlight0     - Press \cf9 <Return>\cf0  to exit tab\cf2\highlight3 
+\par \cf0\highlight0     - Press \cf9 R\cf0  to restart session\cf2\highlight3 
+\par \cf0\highlight0     - Press \cf9 S\cf0  to save terminal output to file\cf2\highlight3 
+\par \pard\cf0\highlight0\f2 
+\par }
+ 
