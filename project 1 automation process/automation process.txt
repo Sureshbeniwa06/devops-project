@@ -1,0 +1,72 @@
+Started by user sureshbeniwal 
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/firstjob
+The recommended git tool is: NONE
+using credential 9e0a3d5f-c994-4f7d-b4fe-9fb5374c32b7
+Cloning the remote Git repository
+Cloning repository https://github.com/Sureshbeniwa06/mavenweb.git
+ > git init /var/lib/jenkins/workspace/firstjob # timeout=10
+Fetching upstream changes from https://github.com/Sureshbeniwa06/mavenweb.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.40.1'
+using GIT_ASKPASS to set credentials 
+ > git fetch --tags --force --progress -- https://github.com/Sureshbeniwa06/mavenweb.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/Sureshbeniwa06/mavenweb.git # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+Seen branch in repository origin/main
+Seen 1 remote branch
+ > git show-ref --tags -d # timeout=10
+Checking out Revision 598b1faafac80215b764c9a8445114a5251acbf9 (origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 598b1faafac80215b764c9a8445114a5251acbf9 # timeout=10
+Commit message: "Add files via upload"
+First time build. Skipping changelog.
+[firstjob] $ /var/lib/jenkins/tools/hudson.tasks.Maven_MavenInstallation/maven_s_w/bin/mvn clean compile package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ----------------< in.InternshipStudio:02-Maven-WebApp >-----------------
+[INFO] Building 02-Maven-WebApp Maven Webapp 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ 02-Maven-WebApp ---
+[INFO] Deleting /var/lib/jenkins/workspace/firstjob/target
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ 02-Maven-WebApp ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/firstjob/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ 02-Maven-WebApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ 02-Maven-WebApp ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/firstjob/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ 02-Maven-WebApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ 02-Maven-WebApp ---
+[WARNING] Using platform encoding (ANSI_X3.4-1968 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/firstjob/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ 02-Maven-WebApp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ 02-Maven-WebApp ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- war:3.4.0:war (default-war) @ 02-Maven-WebApp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [02-Maven-WebApp] in [/var/lib/jenkins/workspace/firstjob/target/02-Maven-WebApp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/firstjob/src/main/webapp]
+[INFO] Building war: /var/lib/jenkins/workspace/firstjob/target/02-Maven-WebApp.war
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  4.298 s
+[INFO] Finished at: 2024-05-31T16:03:07Z
+[INFO] ------------------------------------------------------------------------
+Finished: SUCCESS
